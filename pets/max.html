@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abrigo de Animais - Lyla</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+  <link href='https://fonts.googleapis.com/css?family=DynaPuff' rel='stylesheet'>
+  <style>
+    body {
+      font-family: 'DynaPuff';
+      background-color: #fdf1d9;
+      margin: 0;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    .screen-section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .biografia, .cuidados, .personalidade, .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .biografia img, .cuidados img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .video-container video {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "\2022";
+      color: #444;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .galeria img {
+      width: 200px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+    <header class="header">
+    <a href="../lyla_preview.html" class="back-button" aria-label="Voltar para a página anterior">←</a>
+    <h1>🐾 Abrigo de Animais <span class="paw">🖐️</span></h1>
+    </header>
+
+
+  <section class="screen-section">
+    <h2 class="section-title">Biografia</h2>
+    <div class="biografia">
+      <img src="" alt="" />
+      <div>
+        <p><strong>Nome:</strong> Lyla Bigodes</p>
+        <p><strong>Idade:</strong> 1 ano</p>
+        <p><strong>Sexo:</strong> Feminino</p>
+        <p><strong>Raça:</strong> Europeia</p>
+        <p><strong>Alojamento:</strong> São Domingues de Benfica</p>
+        <p><strong>Tempo no Alojamento:</strong> 4 meses</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen-section">
+    <h2 class="section-title">Cuidados</h2>
+    <div class="cuidados">
+      <ul>
+        <li><strong>Olho esquerdo:</strong> Tem um problema de visão de nascença. Precisa que lhe coloquem um colírio todas as semanas.</li>
+        <li><strong>Pata frontal direita:</strong> Fraturou a pata num acidente. Precisa de um cuidado especial ....</li>
+      </ul>
+      <div>
+        <canvas id="modelo3d"></canvas>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="screen-section">
+    <h2 class="section-title">Personalidade</h2>
+    <div class="personalidade">
+      <div class="video-container">
+        <video controls>
+          <source src="" type="video/mp4">
+        </video>
+      </div>
+      <ul>
+        <li>Gosta de passear</li>
+        <li><strong>Adora a sua bolinha vermelha</strong></li>
+        <li>Ama festinhas na cabeça</li>
+        <li>Brinca muito com os amigos</li>
+        <li>Nunca rejeita um docinho</li>
+        <li>É muito dorminhoca</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Secção 4: Galeria A Passear -->
+  <section class="screen-section">
+    <h2 class="section-title">A passear no seu parque favorito</h2>
+    <div class="galeria">
+      <img src="" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+    </div>
+  </section>
+
+  <!-- Secção 5: Galeria A Brincar -->
+  <section class="screen-section">
+    <h2 class="section-title">A brincar com a sua bolinha vermelha</h2>
+    <div class="galeria">
+      <img src="" alt="">
+      <img src="" alt="">
+      <video controls>
+        <source src="" type="video/mp4">
+      </video>
+    </div>
+  </section>
+</body>
+</html>

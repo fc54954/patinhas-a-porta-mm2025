@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abrigo de Animais - Lyla</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+  <link href='https://fonts.googleapis.com/css?family=DynaPuff' rel='stylesheet'>
+  <style>
+    .screen-section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .biografia, .cuidados, .personalidade, .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .biografia img, .cuidados img {
+      width: 50%;
+      border-radius: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "\2022";
+      color: #444;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .galeria {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.galeria img {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  scroll-snap-align: start;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+div.scroll-container {
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+}
+  </style>
+</head>
+<body>
+    <header class="header">
+    <a href="../index.html" class="back-button" aria-label="Voltar para a página anterior">←</a>
+    <h1>🐾 Abrigo de Animais <span class="paw">🖐️</span></h1>
+    </header>
+
+
+  <section class="screen-section">
+    <h2 class="section-title">Biografia</h2>
+    <div class="biografia">
+      <img src="../photos/lyla1.png" alt="" />
+      <div>
+        <p><strong>Nome:</strong> Lyla Bigodes</p>
+        <p><strong>Idade:</strong> 1 ano</p>
+        <p><strong>Sexo:</strong> Feminino</p>
+        <p><strong>Raça:</strong> Europeia</p>
+        <p><strong>Alojamento:</strong> São Domingues de Benfica</p>
+        <p><strong>Tempo no Alojamento:</strong> 4 meses</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen-section">
+    <h2 class="section-title">Cuidados</h2>
+    <div class="cuidados">
+      <ul>
+        <li><strong>Olho esquerdo:</strong> Tem um problema de visão de nascença. Precisa que lhe coloquem um colírio todas as semanas.</li>
+        <li><strong>Pata frontal direita:</strong> Fraturou a pata num acidente. Precisa de um cuidado especial ....</li>
+      </ul>
+      <div>
+        <canvas id="modelo3d"></canvas>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="screen-section">
+    <h2 class="section-title">Personalidade</h2>
+    <div class="personalidade">
+      <div class="video-container">
+        <video controls>
+          <source src="../videos/lyla1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <ul>
+        <li>Gosta de passear</li>
+        <li><strong>Adora a sua bolinha vermelha</strong></li>
+        <li>Ama festinhas na cabeça</li>
+        <li>Brinca muito com os amigos</li>
+        <li>Nunca rejeita um docinho</li>
+        <li>É muito dorminhoca</li>
+      </ul>
+    </div>
+  </section>
+
+
+<div class="scroll-container">
+  <h2 class="section-title">A passear no seu parque favorito</h2>
+    <img src="../photos/lyla2.png" alt="">
+    <img src="../photos/lyla3.png" alt="">
+    <img src="../photos/lyla4.png" alt=""> 
+</div>
+
+<div class="scroll-container">
+  <h2 class="section-title">A brincar com a sua bolinha vermelha</h2>
+    <img src="../photos/lyla5.png" alt="">
+    <img src="../photos/lyla6.png" alt="">
+    <img src="../photos/lyla7.png" alt=""> 
+</div>
+
+</body>
+</html>
