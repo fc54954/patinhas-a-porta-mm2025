@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abrigo de Animais - Lyla</title>
-    <link rel="stylesheet" href="../styles/styles.css" />
+  <link rel="stylesheet" href="../styles/styles.css" />
   <link href='https://fonts.googleapis.com/css?family=DynaPuff' rel='stylesheet'>
-  <style>
+  <style>   
     .screen-section {
       height: 100vh;
       scroll-snap-align: start;
@@ -49,32 +49,32 @@
     }
 
     .galeria {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-  scroll-behavior: smooth;
-}
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      scroll-behavior: smooth;
+    }
 
-.galeria img {
-  flex: 0 0 auto;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  scroll-snap-align: start;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-div.scroll-container {
-  overflow: auto;
-  white-space: nowrap;
-  padding: 10px;
-}
+    .galeria img {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      scroll-snap-align: start;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    div.scroll-container {
+      overflow: auto;
+      white-space: nowrap;
+      padding: 10px;
+    }
 
-div.scroll-container img {
-  padding: 10px;
-}
+    div.scroll-container img {
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
@@ -113,24 +113,30 @@ div.scroll-container img {
   </section>
 
 
-  <section class="screen-section">
-    <h2 class="section-title">Personalidade</h2>
-    <div class="personalidade">
-      <div class="video-container">
-        <video controls>
-          <source src="../videos/lyla1.mp4" type="video/mp4">
-        </video>
+<section class="screen-section">
+  <h2 class="section-title">Personalidade</h2>
+  <div class="personalidade">
+    <div class="video-container">
+      <video id="petVideo" controls>
+        <source src="../videos/lyla1.mp4" type="video/mp4">
+      </video>
+      <!-- Timeline Canvas -->
+      <div class="video-timeline-container">
+        <canvas id="videoTimeline"></canvas>
+        <div class="timeline-progress"></div>
+        <div class="timeline-scrubber"></div>
       </div>
-      <ul>
-        <li>Gosta de passear</li>
-        <li><strong>Adora a sua bolinha vermelha</strong></li>
-        <li>Ama festinhas na cabeça</li>
-        <li>Brinca muito com os amigos</li>
-        <li>Nunca rejeita um docinho</li>
-        <li>É muito dorminhoca</li>
-      </ul>
     </div>
-  </section>
+    <ul>
+      <li>Gosta de passear</li>
+      <li><strong>Adora a sua bolinha vermelha</strong></li>
+      <li>Ama festinhas na cabeça</li>
+      <li>Brinca muito com os amigos</li>
+      <li>Nunca rejeita um docinho</li>
+      <li>É muito dorminhoca</li>
+    </ul>
+  </div>
+</section>
 
 
 <div class="scroll-container">
@@ -146,6 +152,100 @@ div.scroll-container img {
     <img src="../photos/lyla6.png" alt="">
     <img src="../photos/lyla7.png" alt=""> 
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('petVideo');
+    const timeline = document.getElementById('videoTimeline');
+    const ctx = timeline.getContext('2d');
+    const progressBar = document.querySelector('.timeline-progress');
+    const scrubber = document.querySelector('.timeline-scrubber');
+    
+    // Number of thumbnails to show in timeline
+    const thumbnailsCount = 10;
+    let thumbnails = [];
+    let isDragging = false;
+
+    // Set canvas size
+    timeline.width = timeline.offsetWidth;
+    timeline.height = timeline.offsetHeight;
+
+    // Generate thumbnails when metadata is loaded
+    video.addEventListener('loadedmetadata', function() {
+      generateThumbnails();
+    });
+
+    // Update progress bar as video plays
+    video.addEventListener('timeupdate', function() {
+      const progress = (video.currentTime / video.duration) * 100;
+      progressBar.style.width = `${progress}%`;
+      scrubber.style.left = `${progress}%`;
+    });
+
+    // Handle timeline clicks for seeking
+    timeline.addEventListener('click', function(e) {
+      const rect = timeline.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      video.currentTime = pos * video.duration;
+    });
+
+    // Handle drag for scrubbing
+    timeline.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      handleTimelineMove(e);
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (isDragging) {
+        handleTimelineMove(e);
+      }
+    });
+
+    document.addEventListener('mouseup', function() {
+      isDragging = false;
+    });
+
+    function handleTimelineMove(e) {
+      const rect = timeline.getBoundingClientRect();
+      let pos = (e.clientX - rect.left) / rect.width;
+      pos = Math.max(0, Math.min(1, pos)); // Clamp between 0 and 1
+      video.currentTime = pos * video.duration;
+    }
+
+    function generateThumbnails() {
+      const duration = video.duration;
+      const thumbnailWidth = timeline.width / thumbnailsCount;
+      const thumbnailHeight = timeline.height;
+      
+      // Clear canvas
+      ctx.fillStyle = '#f8d87c';
+      ctx.fillRect(0, 0, timeline.width, timeline.height);
+      
+      // Generate thumbnails at regular intervals
+      for (let i = 0; i < thumbnailsCount; i++) {
+        const time = (i / thumbnailsCount) * duration;
+        captureThumbnail(time, i * thumbnailWidth, 0, thumbnailWidth, thumbnailHeight);
+      }
+    }
+
+    function captureThumbnail(time, x, y, width, height) {
+      // Create a temporary video element to capture the frame
+      const tempVideo = document.createElement('video');
+      tempVideo.src = video.src;
+      tempVideo.currentTime = time;
+      
+      tempVideo.addEventListener('seeked', function() {
+        // Draw the frame to canvas
+        ctx.drawImage(tempVideo, x, y, width, height);
+        
+        // Draw border
+        ctx.strokeStyle = '#4a3b26';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x, y, width, height);
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
