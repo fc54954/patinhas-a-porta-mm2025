@@ -117,13 +117,12 @@
   <h2 class="section-title">Personalidade</h2>
   <div class="personalidade">
     <div class="video-container">
-      <video id="petVideo" controls>
+      <video id="petVideo">
         <source src="../videos/lyla1.mp4" type="video/mp4">
       </video>
       <!-- Timeline Canvas -->
       <div class="video-timeline-container">
         <canvas id="videoTimeline"></canvas>
-        <div class="timeline-progress"></div>
         <div class="timeline-scrubber"></div>
       </div>
     </div>
@@ -158,47 +157,155 @@
     const video = document.getElementById('petVideo');
     const timeline = document.getElementById('videoTimeline');
     const ctx = timeline.getContext('2d');
-    const progressBar = document.querySelector('.timeline-progress');
     const scrubber = document.querySelector('.timeline-scrubber');
-    
-    // Number of thumbnails to show in timeline
-    const thumbnailsCount = 10;
-    let thumbnails = [];
     let isDragging = false;
+    let tempVideo = null;
 
-    // Set canvas size
-    timeline.width = timeline.offsetWidth;
-    timeline.height = timeline.offsetHeight;
+    // Initialize canvas
+    function initCanvas() {
+      timeline.width = timeline.offsetWidth;
+      timeline.height = timeline.offsetHeight;
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, timeline.width, timeline.height);
+    }
+    initCanvas();
 
-    // Generate thumbnails when metadata is loaded
-    video.addEventListener('loadedmetadata', function() {
-      generateThumbnails();
-    });
+    // Create fresh video element for each load
+    function createTempVideo() {
+      if (tempVideo) {
+        tempVideo.onseeked = null;
+        tempVideo.onerror = null;
+      }
 
-    // Update progress bar as video plays
+      tempVideo = document.createElement('video');
+      tempVideo.setAttribute('crossorigin', 'anonymous');
+      tempVideo.muted = true;
+      tempVideo.playsInline = true;
+      return tempVideo;
+    }
+
+    // Generate filmstrip with cache busting
+    function generateFilmstrip() {
+      console.log('Generating filmstrip...');
+
+      // Clear any existing filmstrip
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, timeline.width, timeline.height);
+
+      if (!video.duration || isNaN(video.duration)) {
+        console.error('Invalid video duration');
+        setTimeout(generateFilmstrip, 500); // Retry after delay
+        return;
+      }
+
+      const duration = video.duration;
+      const frameCount = 20;
+      const frameWidth = timeline.width / frameCount;
+      const frameHeight = timeline.height;
+
+      tempVideo = createTempVideo();
+      tempVideo.src = video.currentSrc + '?cachebuster=' + Date.now();
+
+      let framesCaptured = 0;
+      let generationStart = Date.now();
+
+      function captureNextFrame() {
+        if (framesCaptured >= frameCount) {
+          console.log('Filmstrip generation complete');
+          return;
+        }
+
+        // Timeout after 15 seconds
+        if (Date.now() - generationStart > 15000) {
+          console.error('Filmstrip generation timeout');
+          return;
+        }
+
+        const i = framesCaptured;
+        const time = (i / frameCount) * duration;
+
+        tempVideo.currentTime = time;
+
+        tempVideo.onseeked = function() {
+          try {
+            ctx.drawImage(tempVideo, i * frameWidth, 0, frameWidth, frameHeight); // Draw the frame
+
+            framesCaptured++;
+            captureNextFrame();
+          } catch (e) {
+            console.error('Error drawing frame:', e);
+            framesCaptured++;
+            captureNextFrame();
+          }
+        };
+
+        tempVideo.onerror = function() {
+          console.error('Error seeking to time:', time);
+          framesCaptured++;
+          captureNextFrame();
+        };
+      }
+
+      tempVideo.addEventListener('loadedmetadata', function() {
+        captureNextFrame();
+      });
+    }
+
+    // Reset video and setup event listeners, ensuring it reloads properly,
+    // so we can generate the filmstrip after refreshing the page
+    function setupVideo() {
+      video.onseeked = null;
+      video.onerror = null;
+      video.load();
+
+      video.addEventListener('loadedmetadata', function() {
+        generateFilmstrip();
+      });
+
+      video.addEventListener('error', function() {
+        console.error('Main video error', video.error);
+        setTimeout(setupVideo, 1000);
+      });
+    }
+
+    setupVideo();
+
+    // Update scrubber position
     video.addEventListener('timeupdate', function() {
-      const progress = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = `${progress}%`;
-      scrubber.style.left = `${progress}%`;
+      if (video.duration > 0) {
+        const progress = (video.currentTime / video.duration) * 100;
+        scrubber.style.left = `${progress}%`;
+      }
     });
 
-    // Handle timeline clicks for seeking
+    // Timeline interaction
     timeline.addEventListener('click', function(e) {
-      const rect = timeline.getBoundingClientRect();
-      const pos = (e.clientX - rect.left) / rect.width;
-      video.currentTime = pos * video.duration;
+      if (video.duration > 0) {
+        const rect = timeline.getBoundingClientRect();
+        const pos = (e.clientX - rect.left) / rect.width;
+        video.currentTime = pos * video.duration;
+      }
     });
 
-    // Handle drag for scrubbing
     timeline.addEventListener('mousedown', function(e) {
       isDragging = true;
       handleTimelineMove(e);
     });
 
-    document.addEventListener('mousemove', function(e) {
-      if (isDragging) {
-        handleTimelineMove(e);
+    video.addEventListener('click', togglePlay, false);
+
+    function togglePlay() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
       }
+    }
+
+
+
+    document.addEventListener('mousemove', function(e) {
+      if (isDragging) handleTimelineMove(e);
     });
 
     document.addEventListener('mouseup', function() {
@@ -206,44 +313,20 @@
     });
 
     function handleTimelineMove(e) {
-      const rect = timeline.getBoundingClientRect();
-      let pos = (e.clientX - rect.left) / rect.width;
-      pos = Math.max(0, Math.min(1, pos)); // Clamp between 0 and 1
-      video.currentTime = pos * video.duration;
-    }
-
-    function generateThumbnails() {
-      const duration = video.duration;
-      const thumbnailWidth = timeline.width / thumbnailsCount;
-      const thumbnailHeight = timeline.height;
-      
-      // Clear canvas
-      ctx.fillStyle = '#f8d87c';
-      ctx.fillRect(0, 0, timeline.width, timeline.height);
-      
-      // Generate thumbnails at regular intervals
-      for (let i = 0; i < thumbnailsCount; i++) {
-        const time = (i / thumbnailsCount) * duration;
-        captureThumbnail(time, i * thumbnailWidth, 0, thumbnailWidth, thumbnailHeight);
+      if (video.duration > 0) {
+        const rect = timeline.getBoundingClientRect();
+        let pos = (e.clientX - rect.left) / rect.width;
+        pos = Math.max(0, Math.min(1, pos));
+        video.currentTime = pos * video.duration;
       }
     }
 
-    function captureThumbnail(time, x, y, width, height) {
-      // Create a temporary video element to capture the frame
-      const tempVideo = document.createElement('video');
-      tempVideo.src = video.src;
-      tempVideo.currentTime = time;
-      
-      tempVideo.addEventListener('seeked', function() {
-        // Draw the frame to canvas
-        ctx.drawImage(tempVideo, x, y, width, height);
-        
-        // Draw border
-        ctx.strokeStyle = '#4a3b26';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(x, y, width, height);
-      });
-    }
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      if (video.readyState > 0) {
+        generateFilmstrip();
+      }
+    });
   });
 </script>
 
