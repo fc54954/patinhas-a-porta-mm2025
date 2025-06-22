@@ -4,79 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abrigo de Animais - Lyla</title>
+  <link rel="stylesheet" href="../styles/petspage.css" />
   <link rel="stylesheet" href="../styles/styles.css" />
   <link href='https://fonts.googleapis.com/css?family=DynaPuff' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <script src="../scripts/scripts.js"></script>
-  <style>   
-    .screen-section {
-      height: 100vh;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .biografia, .cuidados, .personalidade, .galeria {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .biografia img, .cuidados img {
-      width: 50%;
-      border-radius: 10px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li::before {
-      content: "\2022";
-      color: #444;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-    }
-
-    .galeria {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 1rem;
-      scroll-behavior: smooth;
-    }
-
-    .galeria img {
-      flex: 0 0 auto;
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      scroll-snap-align: start;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-    div.scroll-container {
-      overflow: auto;
-      white-space: nowrap;
-      padding: 10px;
-    }
-
-    div.scroll-container img {
-      padding: 10px;
-    }
-  </style>
 </head>
 <body>
     <header class="header">
@@ -86,7 +19,7 @@
 
 
   <section class="screen-section">
-    <h2 class="section-title">Biografia</h2>
+    <h2 class="section-title">Biografia </h2>
     <div class="biografia">
       <img src="../photos/lyla1.png" alt="" />
       <div>
@@ -118,7 +51,10 @@
   <h2 class="section-title">Personalidade</h2>
   <div class="personalidade">
     <div class="video-container">
-      <video id="petVideo">
+        <div class="video-icon-button" id="scrollToPhotos">
+          <i class="fa fa-soccer-ball-o" aria-hidden="true" title="bolinha vermelha"></i></i>
+        </div>   
+      <video id="petVideo">     
         <source src="../videos/lyla1.mp4" type="video/mp4">
       </video>
       <!-- Timeline Canvas -->
@@ -138,19 +74,29 @@
   </div>
 </section>
 
+  <div class="scroll-container">
+    <h2 class="section-title">A passear no seu parque favorito</h2>
+      <img src="../photos/lyla2.png" alt="">
+      <img src="../photos/lyla3.png" alt="">
+      <img src="../photos/lyla4.png" alt=""> 
+  </div>
 
-<div class="scroll-container">
-  <h2 class="section-title">A passear no seu parque favorito</h2>
-    <img src="../photos/lyla2.png" alt="">
-    <img src="../photos/lyla3.png" alt="">
-    <img src="../photos/lyla4.png" alt=""> 
+  <div id="bolinha-vermelha" class="scroll-container">
+    <h2 class="section-title">A brincar com a sua bolinha vermelha</h2>
+      <img src="../photos/lyla5.png" alt="">
+      <img src="../photos/lyla6.png" alt="">
+      <img src="../photos/lyla7.png" alt=""> 
+  </div>
+
+
+<div class="nav-arrows">
+  <button class="nav-arrow up" id="scrollUp">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+  <button class="nav-arrow down" id="scrollDown">
+    <i class="fa fa-chevron-down"></i>
+  </button>
 </div>
 
-<div class="scroll-container">
-  <h2 class="section-title">A brincar com a sua bolinha vermelha</h2>
-    <img src="../photos/lyla5.png" alt="">
-    <img src="../photos/lyla6.png" alt="">
-    <img src="../photos/lyla7.png" alt=""> 
-</div>
 </body>
 </html>

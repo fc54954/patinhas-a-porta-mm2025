@@ -174,3 +174,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+/*
+----------------
+----------------
+VIDEO
+----------------
+----------------
+*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("scrollToPhotos");
+  const section = document.getElementById("bolinha-vermelha");
+
+  btn.addEventListener("click", function () {
+    section.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+/*
+----------------
+----------------
+ARROWS
+----------------
+----------------
+*/
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("section.screen-section");
+  const scrollDownBtn = document.getElementById("scrollDown");
+  const scrollUpBtn = document.getElementById("scrollUp");
+
+  function getCurrentSectionIndex() {
+    const scrollY = window.scrollY;
+    const index = Array.from(sections).findIndex(section => {
+      const offset = section.offsetTop;
+      const height = section.offsetHeight;
+      return scrollY >= offset - height * 0.25 && scrollY < offset + height * 0.75;
+    });
+    return index;
+  }
+
+  scrollDownBtn.addEventListener("click", () => {
+    const currentIndex = getCurrentSectionIndex();
+    if (currentIndex < sections.length - 1) {
+      sections[currentIndex + 1].scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
+  scrollUpBtn.addEventListener("click", () => {
+    const currentIndex = getCurrentSectionIndex();
+    if (currentIndex > 0) {
+      sections[currentIndex - 1].scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
+

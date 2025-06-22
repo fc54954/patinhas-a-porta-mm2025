@@ -1,0 +1,122 @@
+.screen-section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .biografia, .cuidados, .personalidade, .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .biografia img, .cuidados img {
+      width: 50%;
+      border-radius: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "\2022";
+      color: #444;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .galeria {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      scroll-behavior: smooth;
+    }
+
+    .galeria img {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      scroll-snap-align: start;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    div.scroll-container {
+      overflow: auto;
+      white-space: nowrap;
+      padding: 10px;
+    }
+
+    div.scroll-container img {
+      padding: 10px;
+    }
+
+.video-container {
+  position: relative;
+}
+
+.video-icon-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 36px;
+  z-index: 10;
+}
+
+.video-icon-button:hover i {
+  transform: scale(1.1);
+}
+
+
+.nav-arrows {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Permite clicar só nas setas */
+}
+
+.nav-arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  padding: 10px 12px;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+  z-index: 999;
+}
+
+.nav-arrow.up {
+  top: 20px;
+}
+
+.nav-arrow.down {
+  bottom: 20px;
+}
+
+.nav-arrow:hover {
+  transform: translateX(-50%) scale(1.2);
+}
