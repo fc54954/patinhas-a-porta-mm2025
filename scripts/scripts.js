@@ -214,6 +214,22 @@ document.addEventListener("DOMContentLoaded", () => {
     return index;
   }
 
+  function updateArrowVisibility() {
+    const currentIndex = getCurrentSectionIndex();
+
+    if (currentIndex <= 0) {
+      scrollUpBtn.classList.add("hidden");
+    } else {
+      scrollUpBtn.classList.remove("hidden");
+    }
+
+    if (currentIndex >= sections.length - 1) {
+      scrollDownBtn.classList.add("hidden");
+    } else {
+      scrollDownBtn.classList.remove("hidden");
+    }
+  }
+
   scrollDownBtn.addEventListener("click", () => {
     const currentIndex = getCurrentSectionIndex();
     if (currentIndex < sections.length - 1) {
@@ -227,5 +243,35 @@ document.addEventListener("DOMContentLoaded", () => {
       sections[currentIndex - 1].scrollIntoView({ behavior: "smooth" });
     }
   });
+
+  window.addEventListener("scroll", updateArrowVisibility);
+  window.addEventListener("resize", updateArrowVisibility);
+  updateArrowVisibility();
 });
 
+/*
+----------------
+----------------
+3D MODEL
+----------------
+----------------
+*/
+document.addEventListener("DOMContentLoaded", () => {
+  const hotspots = document.querySelectorAll("model-viewer .hotspot");
+  const textos = document.querySelectorAll(".info-texto");
+  const cuidadosSection = document.getElementById("cuidados-section");
+
+  hotspots.forEach(hotspot => {
+    hotspot.addEventListener("click", () => {
+      const targetId = hotspot.getAttribute("data-target");
+      textos.forEach(t => t.style.display = "none");
+
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.style.display = "block";
+      }
+
+      cuidadosSection.classList.add("duas-colunas");
+    });
+  });
+});
