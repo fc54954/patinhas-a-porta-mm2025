@@ -1,89 +1,97 @@
-  .screen-section {
-      height: 100vh;
-      scroll-snap-align: start;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      font-size: 20px;
-    }
+  .header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebc056; /* amarelo */
+  padding: 1.2rem;
+  font-family: 'Dynapuff', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 1000;
+}
 
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
+.screen-section {
+  scroll-snap-align: start;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-top: 3rem;
+  font-size: 1.7rem;
+}
 
-    .biografia, .cuidados, .personalidade, .galeria {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      align-items: center;
-    }
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 1000;
+  text-align: center;
+  
+}
 
-    .biografia img, .cuidados img {
-      width: 50%;
-      border-radius: 10px;
-    }
+.scroll-wrapper {
+  width: 100%;
+  padding-left: 8rem;
+  padding-right: 8rem; /* 20px total horizontal padding */
+  box-sizing: border-box;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+.scroll-container {
+  padding-top: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
 
-    ul li::before {
-      content: "\2022";
-      color: #444;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-    }
+.image-row {
+  display: inline-flex; /* important for nowrap scroll */
+  gap: 10px;
+}
 
-    .galeria {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 1rem;
-      scroll-behavior: smooth;
-    }
-
-    .galeria img {
-      flex: 0 0 auto;
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      scroll-snap-align: start;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-    div.scroll-container {
-      overflow: auto;
-      white-space: nowrap;
-      padding: 10px;
-    }
-
-    div.scroll-container img {
-      padding: 10px;
-    }
+.image-row img {
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
 
 .video-container {
+  flex: 1;
   position: relative;
+}
+
+.video-container video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .video-icon-button {
   position: absolute;
+  background-color: #f3d69e;
+  border: 3px solid #4a3b26;
+  line-height: 1.2;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  border-radius: 50%;
   top: 10px;
   right: 10px;
   font-size: 36px;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.video-icon-button:hover i {
-  transform: scale(1.1);
+.video-icon-button:hover{
+  background-color: #dabb7d;
 }
 
+.scroll-title{
+  font-size: 2.5rem;
+  font-weight: 1000;
+}
 
 .nav-arrows {
   position: fixed;
@@ -126,47 +134,6 @@
   transform: translateX(-50%) scale(1.2);
 }
 
-
-.cuidados {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80%;
-  gap: 2rem;
-  text-align: center;
-}
-
-.cuidados.duas-colunas {
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 0 2rem;
-  gap: 4rem;
-  text-align: left;
-  margin-top: 30px;
-}
-
-.cuidados ul {
-  max-width: 100%;
-}
-
-.cuidados.duas-colunas ul {
-  width: 50%;
-}
-
-.cuidados.duas-colunas model-viewer {
-  width: 50%;
-  max-height: 90vh;
-}
-
-
-.info-texto {
-  display: none;
-  margin-bottom: 1rem;
-  font-size: 30px;
-}
-
 .hotspot {
   background: transparent;
   border: none;
@@ -184,4 +151,74 @@
 
 .marker:hover {
   transform: scale(1.2);
+}
+
+.image-carousel {
+  flex: 1;
+}
+
+.image-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 24px;
+  padding: 5px 10px;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+}
+
+.biography {
+  flex: 1;
+  padding-left: 30px;
+}
+
+.personality {
+  flex: 1;
+  padding-left: 30px;
+}
+
+.bold {
+  font-weight: 1000;
+}
+
+.cares{
+  flex: 1;
+  padding-right: 30px;
+  max-height: 500px;       /* fixed maximum height */
+  overflow-y: auto;
+}
+
+.animal_name{
+  padding-left: 8rem;
+  padding-top: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.model{
+  flex: 1;
+  background-color: #f3d69e;
+  border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+  .screen-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bio {
+    margin-left: 0;
+    margin-top: 20px;
+  }
 }

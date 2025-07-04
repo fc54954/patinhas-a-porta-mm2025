@@ -15,40 +15,63 @@
 </head>
 <body>
     <header class="header">
-    <a href="../index.html" class="back-button" aria-label="Voltar para a página anterior">←</a>
-    <h1>🐾 Abrigo de Animais <span class="paw">🖐️</span></h1>
+    <a href="../index.html" class="back-button" aria-label="Voltar para a página anterior"><-</a>
+    <p>
+    <img src="..\photos\paw_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+    Abrigo de Animais
+    <img src="..\photos\claw_icon.png" style="width: 50px; vertical-align: middle; margin-left: 5px; padding-bottom: 6px;">
+    </p>
     </header>
 
+  <p class="animal_name">
+    <img src="..\photos\cat_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+    Lyla
+  </p>
 
   <section class="screen-section">
-    <h2 class="section-title">Biografia </h2>
-    <div class="biografia">
-      <img src="../photos/lyla1.png" alt="" />
-      <div>
-        <p><strong>Nome:</strong> Lyla Bigodes</p>
-        <p><strong>Idade:</strong> 1 ano</p>
-        <p><strong>Sexo:</strong> Feminino</p>
-        <p><strong>Raça:</strong> Europeia</p>
-        <p><strong>Alojamento:</strong> São Domingues de Benfica</p>
-        <p><strong>Tempo no Alojamento:</strong> 4 meses</p>
-      </div>
+
+    <div class="image-carousel">
+      <img id="carousel-image" src="..\photos\lyla1.png" alt="Gato Lyla">
     </div>
+
+    <div class="biography">
+      <p class="section-title">Biografia</p>
+      <p style="padding-top: 2rem;">Nome: <span class="bold">Lyla Bigodes</span></p>
+      <p style="padding-top: 1rem;">Idade: <span class="bold">1 ano</span></p>
+      <p style="padding-top: 1rem;">Sexo: <span class="bold">Feminino</span></p>
+      <p style="padding-top: 1rem;">Raça: <span class="bold">Europeia</span></p>
+      <p style="padding-top: 1rem;">Alojamento: <span class="bold">São Domingues de Benfica</span></p>
+      <p style="padding-top: 1rem;">Tempo em Alojamento: <span class="bold">4 meses</span></p>
+    </div>
+
   </section>
 
 
-<section class="screen-section">
-  <h2 class="section-title">Cuidados</h2>
-  <div class="cuidados" id="cuidados-section">
+  <section class="screen-section">
 
-    <ul id="info-textos">
-      <li id="info-pata" class="info-texto">
-        <strong>Pata frontal direita:</strong> Fraturou a pata num acidente. Precisa de um cuidado especial...
-      </li>
-      <li id="info-olho" class="info-texto">
-        <strong>Olho esquerdo:</strong> Tem um problema de visão de nascença. Precisa que lhe coloquem um colírio todas as semanas.
-      </li>
-    </ul>
+    <div class="cares">
+        <p class="section-title">Cuidados</p>
+          <ul id="info-textos" style="padding-top: 2rem;">
+            <li id="info-olho" class="bold">• Olho esquerdo</li>
+          </ul>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Tem um problema de visão de nascença</p>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Precisa que lhe coloquem um colírio todas as semanas</p>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Não a deixar coçar o olho</p>
+          <ul>
+            <li id="info-pata" class="bold" style="padding-top: 1.5rem;">• Pata frontal direita</li>
+          </ul>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Fraturou a pata num acidente</p>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Necessita de um cuidado especial para cortar as unhas</p>
+          <uL>
+            <li id="info-barriga" class="bold" style="padding-top: 1.5rem;">• Intestino</li>
+          </uL>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Tem um intestino muito sensível</p>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Não pode comer salmão</p>
+          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Costuma vomitar quando come muito rápido</p>
+        </ul>
+    </div>
 
+    <div class="model">
       <model-viewer
         src="models/cat.glb"
         alt="Modelo 3D do gato"
@@ -57,30 +80,30 @@
         shadow-intensity="1"
         touch-action="pan-y"
         camera-orbit="0deg 75deg 1m"
-        style="width: 500px; height: 600px;"
+        style="width: 100%; height: 500px;"
       >
 
-        <button class="hotspot" slot="hotspot-1" data-position="-0.05 0.1 0.2" data-normal="0 1 0" data-target="info-pata">
+        <button class="hotspot" slot="hotspot-1" data-position="-0.05 0.06 0.2" data-normal="0 1 0" data-target="info-pata">
           <span class="marker">🐾</span>
         </button>
 
         <button class="hotspot" slot="hotspot-2" data-position="0.015 0.32 0.3" data-normal="0 1 0" data-target="info-olho">
           <span class="marker">👁️</span>
         </button>
+
+        <button class="hotspot" slot="hotspot-3" data-position="-0.0 0.16 0.05" data-normal="0 1 0" data-target="info-barriga">
+          <span class="marker">&#x1F37D;</span>
+        </button>
+
       </model-viewer>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <section class="screen-section">
 
-
-
-
-<section class="screen-section">
-  <h2 class="section-title">Personalidade</h2>
-  <div class="personalidade">
     <div class="video-container">
         <div class="video-icon-button" id="scrollToPhotos">
-          <i class="fa fa-soccer-ball-o" aria-hidden="true" title="bolinha vermelha"></i></i>
+          <img src="..\photos\walking_icon.png" style="width: 35px; vertical-align: middle;">
         </div>   
       <video id="petVideo">     
         <source src="../videos/lyla1.mp4" type="video/mp4">
@@ -91,40 +114,120 @@
         <div class="timeline-scrubber"></div>
       </div>
     </div>
-    <ul>
-      <li>Gosta de passear</li>
-      <li><strong>Adora a sua bolinha vermelha</strong></li>
-      <li>Ama festinhas na cabeça</li>
-      <li>Brinca muito com os amigos</li>
-      <li>Nunca rejeita um docinho</li>
-      <li>É muito dorminhoca</li>
-    </ul>
+
+    <div class="personality">
+      <p class="section-title">Personalidade</p>
+      <p style="padding-top: 2rem;" id="walk">
+        <img src="..\photos\walking_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Gosta de passear</u></p>
+      <p style="padding-top: 1rem;" id="ball">
+        <img src="..\photos\ball_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Adora a sua bolinha vermelha</u></p>
+      <p style="padding-top: 1rem;" id="petting">
+        <img src="..\photos\petting_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Ama festinhas na cabeça</u></p>
+      <p style="padding-top: 1rem;" id="friends">
+        <img src="..\photos\friends_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Brinca muito com os amigos</u></p>
+      <p style="padding-top: 1rem;" id="sweet">
+        <img src="..\photos\sweet_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Nunca rejeita um docinho</u></p>
+      <p style="padding-top: 1rem;" id="sleep">
+        <img src="..\photos\sleep_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>É muito dorminhoca</u></p>
+    </div>
+  </section>
+
+  <div class="scroll-wrapper" style="padding-top: 150px;">
+    <p class="scroll-title">
+      <img src="..\photos\walking_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      A passear no seu parque favorito
+    </p>
+    <div id="walk" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/lyla2.png" alt="">
+          <img src="../photos/lyla3.png" alt="">
+          <img src="../photos/lyla4.png" alt=""> 
+        </div>
+    </div>
   </div>
-</section>
-
-  <div class="scroll-container">
-    <h2 class="section-title">A passear no seu parque favorito</h2>
-      <img src="../photos/lyla2.png" alt="">
-      <img src="../photos/lyla3.png" alt="">
-      <img src="../photos/lyla4.png" alt=""> 
+  
+  <div class="scroll-wrapper" style="padding-top: 50px;">
+    <p class="scroll-title">
+      <img src="..\photos\ball_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      A brincar com a sua bolinha vermelha
+    </p>
+    <div id="ball" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/lyla5.png" alt="">
+          <img src="../photos/lyla6.png" alt="">
+          <img src="../photos/lyla7.png" alt=""> 
+        </div>
+    </div>
   </div>
 
-  <div id="bolinha-vermelha" class="scroll-container">
-    <h2 class="section-title">A brincar com a sua bolinha vermelha</h2>
-      <img src="../photos/lyla5.png" alt="">
-      <img src="../photos/lyla6.png" alt="">
-      <img src="../photos/lyla7.png" alt=""> 
+  <div class="scroll-wrapper" style="padding-top: 50px;">
+    <p class="scroll-title">
+      <img src="..\photos\petting_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      A apreciar umas boas festinhas
+    </p>
+    <div id="petting" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/lyla5.png" alt="">
+          <img src="../photos/lyla6.png" alt="">
+          <img src="../photos/lyla7.png" alt=""> 
+        </div>
+    </div>
   </div>
 
+  <div class="scroll-wrapper" style="padding-top: 50px;">
+    <p class="scroll-title">
+      <img src="..\photos\friends_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      A brincar com os seus amiguinhos
+    </p>
+    <div id="friends" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/lyla5.png" alt="">
+          <img src="../photos/lyla6.png" alt="">
+          <img src="../photos/lyla7.png" alt=""> 
+        </div>
+    </div>
+  </div>
 
-<div class="nav-arrows">
-  <button class="nav-arrow up" id="scrollUp">
-    <i class="fa fa-chevron-up"></i>
-  </button>
-  <button class="nav-arrow down" id="scrollDown">
-    <i class="fa fa-chevron-down"></i>
-  </button>
-</div>
+  <div class="scroll-wrapper" style="padding-top: 50px;">
+    <p class="scroll-title">
+      <img src="..\photos\sweet_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      A comer os seus biscoitos favoritos
+    </p>
+    <div id="sweet" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/lyla5.png" alt="">
+          <img src="../photos/lyla6.png" alt="">
+          <img src="../photos/lyla7.png" alt=""> 
+        </div>
+    </div>
+  </div>
+
+  <div class="scroll-wrapper" style="padding-top: 50px;">
+    <p class="scroll-title">
+      <img src="..\photos\sleep_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      A fazer umas sestas
+    </p>
+    <div id="sleep" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/lyla5.png" alt="">
+          <img src="../photos/lyla6.png" alt="">
+          <img src="../photos/lyla7.png" alt=""> 
+        </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+  <div class="nav-arrows">
+    <button class="nav-arrow up" id="scrollUp">
+      <i class="fa fa-chevron-up"></i>
+    </button>
+    <button class="nav-arrow down" id="scrollDown">
+      <i class="fa fa-chevron-down"></i>
+    </button>
+  </div>
 
 </body>
 </html>

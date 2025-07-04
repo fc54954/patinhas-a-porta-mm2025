@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       src: "videos/lyla.mp4",
       linkHref: "pets/lyla.html",
-      linkText: "Lyla →"
+      linkText: "Lyla ->"
     },
     {
       src: "videos/max.mp4",
       linkHref: "pets/max.html",
-      linkText: "Max →"
+      linkText: "Max ->"
     }
   ];
 
