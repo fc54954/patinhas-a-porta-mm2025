@@ -296,6 +296,44 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+  document.addEventListener('DOMContentLoaded', () => {
+    const modelViewer = document.querySelector('model-viewer');
+    
+    // Wait for the model to fully load
+    modelViewer.addEventListener('load', () => {
+      
+      document.querySelectorAll('.care-section').forEach(section => {
+        const hotspotSlot = "hotspot-" + section.id;
+        
+        if (hotspotSlot) {
+          section.style.cursor = 'pointer';
+          
+          section.addEventListener('click', () => {
+            const hotspot = document.querySelector(`button[slot="${hotspotSlot}"]`);
+            if (hotspot) {
+              const position = hotspot.dataset.position.split(' ').map(Number);
+              
+              const orbitTheta = '75deg'; // vertical angle
+              const orbitPhi = '0deg';    // horizontal angle
+              const radius = '1m';        // distance
+              
+              modelViewer.cameraTarget = `${position[0]}m ${position[1]}m ${position[2]}m`;
+              modelViewer.cameraOrbit = `${orbitPhi} ${orbitTheta} ${radius}`;
+              
+              highlightHotspot(hotspot);
+            }
+          });
+        }
+      });
+    });
+  });
+  
+  function highlightHotspot(hotspot) {
+    hotspot.classList.add('hotspot-highlight');
+    setTimeout(() => {
+      hotspot.classList.remove('hotspot-highlight');
+    }, 1000);
+  }
 
 
 function updateImage(carouselImage, currentImageIndex, imagePath) {
