@@ -248,3 +248,14 @@
 .arrow:hover {
   background: rgba(255, 255, 255, 0.8);
 }
+
+.highlight {
+  background-color: rgba(255, 255, 0, 0.3);
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.care-section {
+    margin-bottom: 20px;
+}

@@ -276,6 +276,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const hotspots = document.querySelectorAll('.hotspot');
+  const caresContainer = document.getElementById('cares-container');
+  
+  hotspots.forEach(hotspot => {
+    hotspot.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+
+        caresContainer.scrollTo({
+          top: targetElement.offsetTop - caresContainer.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+
+
+
 function updateImage(carouselImage, currentImageIndex, imagePath) {
   carouselImage.src = imagePath
   carouselImage.alt = currentImageIndex;
