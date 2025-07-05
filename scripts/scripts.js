@@ -285,12 +285,20 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetId = this.getAttribute('data-target');
       
       const targetElement = document.getElementById(targetId);
+
       if (targetElement) {
 
         caresContainer.scrollTo({
           top: targetElement.offsetTop - caresContainer.offsetTop - 20,
           behavior: 'smooth'
         });
+
+         targetElement.classList.add("highlight-animate");
+        // Remove class after animation to allow replaying
+        setTimeout(() => {
+          targetElement.classList.remove("highlight-animate");
+        }, 800); // match the animation duration
+
       }
     });
   });
@@ -359,4 +367,22 @@ function nextImage(animalName, length) {
   const newIndex = index === length ? 1 : index + 1;
   imagePath = getPath(animalName, newIndex)
   updateImage(carouselImage, newIndex, imagePath);
+}
+
+//THUMBNAIL
+function openModal(imageSrc, descriptionText) {
+  const modal = document.getElementById("myModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalDesc = document.getElementById("modalDesc");
+
+  modal.style.display = "flex";
+  document.body.classList.add("modal-open");
+
+  modalImage.src = imageSrc;
+  modalDesc.textContent = descriptionText;
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+  document.body.classList.remove("modal-open");
 }

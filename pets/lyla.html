@@ -34,8 +34,8 @@
       <img id="carousel-image" src="..\photos\lyla1.png" alt="1">
 
       <div class="carousel-nav">
-        <button class="arrow left-arrow" onclick="prevImage('lyla', 3)"><</button>
-        <button class="arrow right-arrow" onclick="nextImage('lyla', 3)">></button>
+        <button style="margin-left: 10px;" class="arrow left-arrow" onclick="prevImage('lyla', 3)"><</button>
+        <button style="margin-right: 10px;" class="arrow right-arrow" onclick="nextImage('lyla', 3)">></button>
       </div>
     </div>
 
@@ -147,6 +147,14 @@
     </div>
   </section>
 
+  <div id="myModal" class="modal" onclick="closeModal()">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modalImage" src="" alt="Full Image" class="expand-image">
+      <div id="modalDesc" class="description">Description over the image.</div>
+    </div>
+  </div>
+
   <div class="scroll-wrapper" style="padding-top: 175px;">
     <p class="scroll-title">
       <img src="..\photos\walking_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
@@ -154,9 +162,9 @@
     </p>
     <div id="walk" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla2.png" alt="">
-          <img src="../photos/lyla3.png" alt="">
-          <img src="../photos/lyla4.png" alt=""> 
+          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio! (12/11/2022)')">
+          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :) (21/1/2023)')">
+          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores (4/3/2023)')"> 
         </div>
     </div>
   </div>
@@ -168,9 +176,9 @@
     </p>
     <div id="ball" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla5.png" alt="">
-          <img src="../photos/lyla6.png" alt="">
-          <img src="../photos/lyla7.png" alt=""> 
+          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
+          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
+          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
         </div>
     </div>
   </div>
@@ -182,9 +190,9 @@
     </p>
     <div id="petting" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla5.png" alt="">
-          <img src="../photos/lyla6.png" alt="">
-          <img src="../photos/lyla7.png" alt=""> 
+          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
+          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
+          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
         </div>
     </div>
   </div>
@@ -196,9 +204,9 @@
     </p>
     <div id="friends" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla5.png" alt="">
-          <img src="../photos/lyla6.png" alt="">
-          <img src="../photos/lyla7.png" alt=""> 
+          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
+          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
+          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
         </div>
     </div>
   </div>
@@ -210,9 +218,9 @@
     </p>
     <div id="sweet" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla5.png" alt="">
-          <img src="../photos/lyla6.png" alt="">
-          <img src="../photos/lyla7.png" alt=""> 
+          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
+          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
+          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
         </div>
     </div>
   </div>
@@ -224,16 +232,15 @@
     </p>
     <div id="sleep" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla5.png" alt="">
-          <img src="../photos/lyla6.png" alt="">
-          <img src="../photos/lyla7.png" alt=""> 
+          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
+          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
+          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
         </div>
     </div>
   </div>
 
   <br>
   <br>
-
 
   <div class="nav-arrows">
     <button class="nav-arrow up" id="scrollUp">
