@@ -18,7 +18,7 @@
   flex-wrap: wrap;
   padding-left: 8rem;
   padding-right: 8rem;
-  padding-top: 3rem;
+  padding-top: 6rem;
   font-size: 1.7rem;
 }
 
@@ -200,7 +200,7 @@
 
 .animal_name{
   padding-left: 8rem;
-  padding-top: 3rem;
+  padding-top: 4rem;
   font-size: 3rem;
   font-weight: bold;
 }
