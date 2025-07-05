@@ -275,3 +275,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function updateImage(carouselImage, currentImageIndex, imagePath) {
+  carouselImage.src = imagePath
+  carouselImage.alt = currentImageIndex;
+}
+
+function getPath(animalName, index){
+  return "../photos/" + animalName + index + ".png"
+}
+
+function prevImage(animalName, length) {
+  const carouselImage = document.getElementById('carousel-image');
+  const index = carouselImage.alt - 0
+  const newIndex = index === 1 ? length : index - 1;
+  imagePath = getPath(animalName, newIndex)
+  updateImage(carouselImage, newIndex, imagePath);
+}
+
+function nextImage(animalName, length) {
+  const carouselImage = document.getElementById('carousel-image');
+  const index = carouselImage.alt - 0
+  const newIndex = index === length ? 1 : index + 1;
+  imagePath = getPath(animalName, newIndex)
+  updateImage(carouselImage, newIndex, imagePath);
+}

@@ -155,6 +155,8 @@
 
 .image-carousel {
   flex: 1;
+  position: relative;
+  display: inline-block;
 }
 
 .image-carousel img {
@@ -221,4 +223,28 @@
     margin-left: 0;
     margin-top: 20px;
   }
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.arrow {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
