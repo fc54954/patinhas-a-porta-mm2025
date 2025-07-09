@@ -178,23 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
 /*
 ----------------
 ----------------
-VIDEO
-----------------
-----------------
-*/
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("scrollToPhotos");
-  const section = document.getElementById("bolinha-vermelha");
-
-  btn.addEventListener("click", function () {
-    section.scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-/*
-----------------
-----------------
 ARROWS
 ----------------
 ----------------
@@ -385,4 +368,144 @@ function openModal(imageSrc, descriptionText) {
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
   document.body.classList.remove("modal-open");
+}
+
+/*
+----------------
+----------------
+VIDEO
+----------------
+----------------
+*/
+
+// Timestamps -----------
+// moved to respective html file for each personality topic
+
+// Personality Topics -----------
+document.addEventListener("DOMContentLoaded", () => {
+  setupPersonalityHighlights();
+});
+
+function setupPersonalityHighlights() {
+  const video = document.getElementById("petVideo");
+  const items = document.querySelectorAll(".personality-item");
+
+  if (!video || items.length === 0) return;
+
+  // Highlight current topic
+  video.addEventListener("timeupdate", () => {
+    const currentTime = video.currentTime;
+    highlightCurrentTopic(currentTime, items);
+  });
+
+  // each topic 
+  items.forEach((item) => {
+    item.style.cursor = "pointer";
+    item.addEventListener("click", () => {
+      const start = parseFloat(item.dataset.start);
+      if (!isNaN(start)) {
+        video.currentTime = start;
+        video.play();
+      }
+    });
+});
+}
+
+// aux - Highlight current topic
+function highlightCurrentTopic(currentTime, items) {
+  items.forEach((item) => {
+    const start = parseFloat(item.dataset.start);
+    const end = parseFloat(item.dataset.end);
+
+    const isActive = currentTime >= start && currentTime < end;
+    item.classList.toggle("active", isActive);
+  });
+}
+
+// Overlayed Icon -----------
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById("petVideo");
+  const overlayButton = document.getElementById("scrollToPhotos");
+  const overlayImg = overlayButton.querySelector("img");
+  const items = document.querySelectorAll(".personality-item");
+
+  overlayButton.style.cursor = "pointer";
+
+  video.addEventListener("timeupdate", () => {
+    const currentTime = video.currentTime;
+    let currentTopic = null;
+    items.forEach((item) => {
+      const start = parseFloat(item.dataset.start);
+      const end = parseFloat(item.dataset.end);
+
+      if (video.currentTime >= start && video.currentTime < end) {
+        currentTopic = item;
+      }
+    });
+    //set image and scroll to correct page section
+    if (currentTopic) {
+      const topicImg = currentTopic.querySelector("img");
+      if (topicImg) {
+        overlayImg.src = topicImg.src;
+        overlayButton.style.display = "flex";
+
+        overlayButton.onclick = () => {
+          const section = document.querySelector(`.scroll-container#${currentTopic.id}`);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+            section.classList.add("highlight-animate");
+            setTimeout(() => section.classList.remove("highlight-animate"), 800);
+          }
+        };
+      }
+    } else {
+      overlayButton.style.display = "none";
+    }
+  });
+});
+
+//TImeline markers:
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("petVideo");
+  const overlay = document.querySelector('.timeline-markers-overlay');
+
+  video.addEventListener('loadedmetadata', () => {
+    // get start times
+    const items = document.querySelectorAll(".personality-item");
+    const cueTimes = {};
+    items.forEach(item => {
+      const start = parseFloat(item.dataset.start);
+      if (!isNaN(start)) {
+        cueTimes[item.id] = start;
+      }
+    });
+
+    createTimelineMarkers(video, overlay, cueTimes);
+  });
+});
+
+function createTimelineMarkers(video, overlayContainer, cueTimes) {
+  if (!video || !overlayContainer) return;
+
+  const duration = video.duration;
+  overlayContainer.innerHTML = '';
+// defines marker positions + image (will always be the same icon as the topic)
+  Object.entries(cueTimes).forEach(([key, startTime]) => {
+    if (startTime > duration) return;
+
+    const leftPercent = (startTime / duration) * 100;
+
+    const marker = document.createElement('div');
+    marker.classList.add('timeline-marker');
+    marker.style.left = `${leftPercent}%`;
+
+    const icon = document.createElement('img');
+    icon.src = `../photos/${key}_icon.png`;
+    icon.alt = key;
+
+    marker.appendChild(icon);
+    overlayContainer.appendChild(marker);
+
+    console.log('Creating marker:', key, startTime, 'at', leftPercent + '%');
+  });
 }

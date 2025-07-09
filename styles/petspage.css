@@ -348,5 +348,14 @@
     }
 
     .highlight-animate {
-      animation: glow 0.8s ease-in-out;
+      animation: glow 1s ease-in-out;
     }
+
+.personality-item.active {
+  color: #b05e12;
+  background-color: rgba(255, 200, 150, 0.3);
+  border-radius: 10px;
+  transition: background-color 0.5s ease;
+  transition: color 0.5s ease;
+  
+}
