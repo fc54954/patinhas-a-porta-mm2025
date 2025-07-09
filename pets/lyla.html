@@ -126,23 +126,24 @@
       <!-- Timeline Canvas -->
       <div class="video-timeline-container">
         <canvas id="videoTimeline"></canvas>
+        <div class="timeline-markers-overlay"></div> <!-- overlay container for the markers -->
         <div class="timeline-scrubber"></div>
       </div>
     </div>
 
     <div class="personality">
       <p class="section-title">Personalidade</p>
-      <p style="padding-top: 2rem;" id="walk">
+      <p style="padding-top: 2rem;" id="walking" class="personality-item" data-start="1" data-end="2">
         <img src="..\photos\walking_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Gosta de passear</u></p>
-      <p style="padding-top: 1rem;" id="ball">
+      <p style="padding-top: 1rem;" id="ball" class="personality-item" data-start="2" data-end="3">
         <img src="..\photos\ball_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Adora a sua bolinha vermelha</u></p>
-      <p style="padding-top: 1rem;" id="petting">
+      <p style="padding-top: 1rem;" id="petting" class="personality-item" data-start="3" data-end="4">
         <img src="..\photos\petting_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Ama festinhas na cabeça</u></p>
-      <p style="padding-top: 1rem;" id="friends">
+      <p style="padding-top: 1rem;" id="friends" class="personality-item" data-start="4" data-end="5">
         <img src="..\photos\friends_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Brinca muito com os amigos</u></p>
-      <p style="padding-top: 1rem;" id="sweet">
+      <p style="padding-top: 1rem;" id="sweet" class="personality-item" data-start="5" data-end="6">
         <img src="..\photos\sweet_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Nunca rejeita um docinho</u></p>
-      <p style="padding-top: 1rem;" id="sleep">
+      <p style="padding-top: 1rem;" id="sleep" class="personality-item" data-start="6" data-end="7">
         <img src="..\photos\sleep_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>É muito dorminhoca</u></p>
     </div>
   </section>
@@ -160,7 +161,7 @@
       <img src="..\photos\walking_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
       A passear no seu parque favorito
     </p>
-    <div id="walk" class="scroll-container">
+    <div id="walking" class="scroll-container">
         <div class="image-row">
           <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio! (12/11/2022)')">
           <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :) (21/1/2023)')">
