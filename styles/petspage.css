@@ -92,51 +92,6 @@
   background-color: #dabb7d;
 }
 
-.scroll-title{
-  font-size: 2.5rem;
-  font-weight: 1000;
-}
-
-.nav-arrows {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.nav-arrow {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 24px;
-  padding: 10px 12px;
-  cursor: pointer;
-  pointer-events: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease;
-  z-index: 999;
-}
-
-.nav-arrow.hidden {
-  display: none;
-}
-
-.nav-arrow.up {
-  top: 20px;
-}
-
-.nav-arrow.down {
-  bottom: 20px;
-}
-
-.nav-arrow:hover {
-  transform: translateX(-50%) scale(1.2);
-}
 
 .hotspot {
   background: transparent;

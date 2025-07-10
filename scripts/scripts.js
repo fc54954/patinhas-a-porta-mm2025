@@ -175,62 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-/*
-----------------
-----------------
-ARROWS
-----------------
-----------------
-*/
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll("section.screen-section");
-  const scrollDownBtn = document.getElementById("scrollDown");
-  const scrollUpBtn = document.getElementById("scrollUp");
 
-  function getCurrentSectionIndex() {
-    const scrollY = window.scrollY;
-    const index = Array.from(sections).findIndex(section => {
-      const offset = section.offsetTop;
-      const height = section.offsetHeight;
-      return scrollY >= offset - height * 0.25 && scrollY < offset + height * 0.75;
-    });
-    return index;
-  }
-
-  function updateArrowVisibility() {
-    const currentIndex = getCurrentSectionIndex();
-
-    if (currentIndex <= 0) {
-      scrollUpBtn.classList.add("hidden");
-    } else {
-      scrollUpBtn.classList.remove("hidden");
-    }
-
-    if (currentIndex >= sections.length - 1) {
-      scrollDownBtn.classList.add("hidden");
-    } else {
-      scrollDownBtn.classList.remove("hidden");
-    }
-  }
-
-  scrollDownBtn.addEventListener("click", () => {
-    const currentIndex = getCurrentSectionIndex();
-    if (currentIndex < sections.length - 1) {
-      sections[currentIndex + 1].scrollIntoView({ behavior: "smooth" });
-    }
-  });
-
-  scrollUpBtn.addEventListener("click", () => {
-    const currentIndex = getCurrentSectionIndex();
-    if (currentIndex > 0) {
-      sections[currentIndex - 1].scrollIntoView({ behavior: "smooth" });
-    }
-  });
-
-  window.addEventListener("scroll", updateArrowVisibility);
-  window.addEventListener("resize", updateArrowVisibility);
-  updateArrowVisibility();
-});
 
 /*
 ----------------
