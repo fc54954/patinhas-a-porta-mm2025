@@ -332,23 +332,23 @@ function updateImage(carouselImage, currentImageIndex, imagePath) {
   carouselImage.alt = currentImageIndex;
 }
 
-function getPath(animalName, index){
-  return "../photos/" + animalName + index + ".png"
+function getPath(path, animalName, index){
+  return path + animalName + index + ".png"
 }
 
-function prevImage(animalName, length) {
+function prevImage(path, animalName, length) {
   const carouselImage = document.getElementById('carousel-image');
   const index = carouselImage.alt - 0
   const newIndex = index === 1 ? length : index - 1;
-  imagePath = getPath(animalName, newIndex)
+  imagePath = getPath(path, animalName, newIndex)
   updateImage(carouselImage, newIndex, imagePath);
 }
 
-function nextImage(animalName, length) {
+function nextImage(path, animalName, length) {
   const carouselImage = document.getElementById('carousel-image');
   const index = carouselImage.alt - 0
   const newIndex = index === length ? 1 : index + 1;
-  imagePath = getPath(animalName, newIndex)
+  imagePath = getPath(path, animalName, newIndex)
   updateImage(carouselImage, newIndex, imagePath);
 }
 
