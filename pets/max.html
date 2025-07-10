@@ -29,11 +29,11 @@
   <section class="screen-section" style="padding-top: 4rem!important;">
 
     <div class="image-carousel">
-      <img id="carousel-image" src="..\photos\lyla1.png" alt="1">
+      <img id="carousel-image" src="..\photos\max\max1.png" alt="1">
 
       <div class="carousel-nav">
-        <button style="margin-left: 10px;" class="arrow left-arrow" onclick="prevImage('lyla', 3)"><</button>
-        <button style="margin-right: 10px;" class="arrow right-arrow" onclick="nextImage('lyla', 3)">></button>
+        <button style="margin-left: 10px;" class="arrow left-arrow" onclick="prevImage('../photos/max/', 'max', 3)"><</button>
+        <button style="margin-right: 10px;" class="arrow right-arrow" onclick="nextImage('../photos/max/', 'max', 3)">></button>
       </div>
     </div>
 
@@ -41,12 +41,12 @@
     <!-- Texto  -->
     <div class="biography">
       <p class="section-title">Biografia</p>
-      <p style="padding-top: 2rem;">Nome: <span class="bold">Lyla Bigodes</span></p>
-      <p style="padding-top: 1rem;">Idade: <span class="bold">2 anos</span></p>
+      <p style="padding-top: 2rem;">Nome: <span class="bold">Max</span></p>
+      <p style="padding-top: 1rem;">Idade: <span class="bold">1 anos</span></p>
       <p style="padding-top: 1rem;">Sexo: <span class="bold">Masculino</span></p>
-      <p style="padding-top: 1rem;">Raça: <span class="bold">Europeia</span></p>
+      <p style="padding-top: 1rem;">Raça: <span class="bold">Harrier</span></p>
       <p style="padding-top: 1rem;">Alojamento: <span class="bold">São Domingues de Benfica</span></p>
-      <p style="padding-top: 1rem;">Tempo em Alojamento: <span class="bold">4 meses</span></p>
+      <p style="padding-top: 1rem;">Tempo em Alojamento: <span class="bold">8 meses</span></p>
     </div>
 
   </section>
@@ -56,30 +56,14 @@
 
     <div class="cares" id="cares-container">
         <p class="section-title">Cuidados</p>
-          <section id="info-olho" class="care-section">
+          <section id="info-orelhas" class="care-section">
             <ul style="padding-top: 2rem;">
-              <li id="info-olho" class="bold">• <u>Olho esquerdo</u></li>
+              <li id="info-orelhas" class="bold">• <u>Ouvidos</u></li>
             </ul>
-            <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Tem um problema de visão de nascença</p>
-            <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Precisa que lhe coloquem um colírio todas as semanas</p>
-            <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Não a deixar coçar o olho</p>
-          </section>
-
-          <section id="info-pata" class="care-section">
-          <ul>
-            <li id="info-pata" class="bold" style="padding-top: 1.5rem;">• <u>Pata frontal direita</u></li>
-          </ul>
-          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Fraturou a pata num acidente</p>
-          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Necessita de um cuidado especial para cortar as unhas</p>
-          </section>
-
-          <section id="info-barriga" class="care-section">
-          <uL>
-            <li id="info-barriga" class="bold" style="padding-top: 1.5rem;">• <u>Intestino</u></li>
-          </uL>
-          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Tem um intestino muito sensível</p>
-          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Não pode comer salmão</p>
-          <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Costuma vomitar quando come muito rápido</p>
+            <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Tendência a desenvolver otites (infecções de ouvido), principalmente devido às orelhas caídas que acumulam calor e umidade</p>
+            <p style="padding-top: 0.5rem; padding-left: 1rem;">  -É importante limpar os ouvidos regularmente, conforme orientação do veterinário</p>
+            <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Observar sinais de coceira, mau cheiro ou secreção no ouvido</p>
+            <p style="padding-top: 0.5rem; padding-left: 1rem;">  -Não deixar coçar com as patas ou esfregar a cabeça no chão, pois pode piorar a inflamação</p>
           </section>
         </ul>
     </div>
@@ -96,18 +80,14 @@
         style="width: 100%; height: 500px;"
       >
 
-        <button class="hotspot" slot="hotspot-info-pata" data-position="-0.05 0.06 0.2" data-normal="0 1 0" data-target="info-pata" >
-          <span class="marker">🐾</span>
+        <button class="hotspot" slot="hotspot-info-orelhas" data-position="-0.09 0.72 0.35" data-normal="0 1 0" data-target="info-orelhas" >
+          <span class="marker">👂</span>
         </button>
 
-        <button class="hotspot" slot="hotspot-info-olho" data-position="0.015 0.32 0.3" data-normal="0 1 0" data-target="info-olho">
-          <span class="marker">👁️</span>
-        </button>
 
-        <button class="hotspot" slot="hotspot-info-barriga" data-position="-0.0 0.16 0.05" data-normal="0 1 0" data-target="info-barriga">
-          <span class="marker">&#x1F37D;</span>
+        <button class="hotspot" slot="hotspot-info-orelha-dir" data-position="0.09 0.72 0.35" data-normal="0 1 0" data-target="info-orelhas" >
+          <span class="marker">👂</span>
         </button>
-
       </model-viewer>
     </div>
   </section>
@@ -119,7 +99,7 @@
           <img src="..\photos\walking_icon.png" style="width: 35px; vertical-align: middle;">
         </div>   
       <video id="petVideo" controls>     
-        <source src="../videos/lyla1.mp4" type="video/mp4">
+        <source src="../videos/max1.mp4" type="video/mp4">
       </video>
       <!-- Timeline Canvas -->
       <div class="video-timeline-container">
@@ -131,21 +111,19 @@
 
     <div class="personality">
       <p class="section-title">Personalidade</p>
-      <p style="padding-top: 2rem;" id="walking" class="personality-item" data-start="1" data-end="2">
-        <img src="..\photos\walking_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Gosta de passear</u></p>
-      <p style="padding-top: 1rem;" id="ball" class="personality-item" data-start="2" data-end="3">
-        <img src="..\photos\ball_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Adora a sua bolinha vermelha</u></p>
-      <p style="padding-top: 1rem;" id="petting" class="personality-item" data-start="3" data-end="4">
-        <img src="..\photos\petting_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Ama festinhas na cabeça</u></p>
-      <p style="padding-top: 1rem;" id="friends" class="personality-item" data-start="4" data-end="5">
-        <img src="..\photos\friends_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Brinca muito com os amigos</u></p>
-      <p style="padding-top: 1rem;" id="sweet" class="personality-item" data-start="5" data-end="6">
-        <img src="..\photos\sweet_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Nunca rejeita um docinho</u></p>
-      <p style="padding-top: 1rem;" id="sleep" class="personality-item" data-start="6" data-end="7">
-        <img src="..\photos\sleep_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>É muito dorminhoca</u></p>
+      <p style="padding-top: 2rem;" id="walking" class="personality-item" data-start="0" data-end="9">
+        <img src="..\photos\walking_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Gosta de explorar</u></p>
+      <p style="padding-top: 1rem;" id="friends" class="personality-item" data-start="9" data-end="18">
+        <img src="..\photos\friends_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Brincar com amigos</u></p>
+      <p style="padding-top: 1rem;" id="raindrops" class="personality-item" data-start="19" data-end="27">
+        <img src="..\photos\raindrops_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Brincar na agua</u></p>
+      <p style="padding-top: 1rem;" id="car" class="personality-item" data-start="27" data-end="40">
+        <img src="..\photos\car_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Andar de carro</u></p>
+      <p style="padding-top: 1rem;" id="sweet" class="personality-item" data-start="40" data-end="52">
+        <img src="..\photos\sweet_icon.png" style="width: 35px; vertical-align: middle; margin-right: 5px;"> <u>Roer ossos</u></p>
     </div>
   </section>
-
+  
   <div id="myModal" class="modal" onclick="closeModal()">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -157,55 +135,55 @@
   <div class="scroll-wrapper" style="padding-top: 175px;">
     <p class="scroll-title">
       <img src="..\photos\walking_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
-      A passear no seu parque favorito
+      A explorar
     </p>
     <div id="walking" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio! (12/11/2022)')">
-          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :) (21/1/2023)')">
-          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores (4/3/2023)')"> 
+          <img src="../photos/max/max1.png" alt="" onclick="openModal('../photos/max/max1.png','Primeira grande aventura!')">
+          <img src="../photos/max/max2.png" alt="" onclick="openModal('../photos/max/max2.png','A seguir o rastro de algo curioso...')">
+          <img src="../photos/max/max3.png" alt="" onclick="openModal('../photos/max/max3.png','Liberdade é isto!')"> 
         </div>
     </div>
   </div>
   
   <div class="scroll-wrapper" style="padding-top: 75px;">
     <p class="scroll-title">
-      <img src="..\photos\ball_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
-      A brincar com a sua bolinha vermelha
-    </p>
-    <div id="ball" class="scroll-container">
-        <div class="image-row">
-          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
-          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
-          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
-        </div>
-    </div>
-  </div>
-
-  <div class="scroll-wrapper" style="padding-top: 75px;">
-    <p class="scroll-title">
-      <img src="..\photos\petting_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
-      A apreciar umas boas festinhas
-    </p>
-    <div id="petting" class="scroll-container">
-        <div class="image-row">
-          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
-          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
-          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
-        </div>
-    </div>
-  </div>
-
-  <div class="scroll-wrapper" style="padding-top: 75px;">
-    <p class="scroll-title">
       <img src="..\photos\friends_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
-      A brincar com os seus amiguinhos
+      A brincar com os seus amigos
     </p>
     <div id="friends" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
-          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
-          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
+          <img src="../photos/max/max4.png" alt="" onclick="openModal('../photos/max/max4.png','O brinquedo preferido partilhado a dois :)')">
+          <img src="../photos/max/max5.png" alt="" onclick="openModal('../photos/max/max5.png','Corrida entre amigos!')">
+          <img src="../photos/max/max6.png" alt="" onclick="openModal('../photos/max/max6.png','Novos amigos, novas aventuras!')"> 
+        </div>
+    </div>
+  </div>
+
+  <div class="scroll-wrapper" style="padding-top: 75px;">
+    <p class="scroll-title">
+      <img src="..\photos\raindrops_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      A brincar na agua
+    </p>
+    <div id="raindrops" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/max/max7.png" alt="" onclick="openModal('../photos/max/max6.png','A pensar se mergulha ou não...')">
+          <img src="../photos/max/max8.png" alt="" onclick="openModal('../photos/max/max8.png','Primeiros passos no lago!')">
+          <img src="../photos/max/max9.png" alt="" onclick="openModal('../photos/max/max9.png','Missão cumprida: pau resgatado!')"> 
+        </div>
+    </div>
+  </div>
+
+  <div class="scroll-wrapper" style="padding-top: 75px;">
+    <p class="scroll-title">
+      <img src="..\photos\car_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
+      Andar de carro
+    </p>
+    <div id="car" class="scroll-container">
+        <div class="image-row">
+          <img src="../photos/max/max10.png" alt="" onclick="openModal('../photos/max/max10.png','A caminho da aventura!')">
+          <img src="../photos/max/max11.png" alt="" onclick="openModal('../photos/max/max11.png','O vento no focinho é outra coisa...')">
+          <img src="../photos/max/max12.png" alt="" onclick="openModal('../photos/max/max12.png','Sempre atento à estrada!')"> 
         </div>
     </div>
   </div>
@@ -217,23 +195,9 @@
     </p>
     <div id="sweet" class="scroll-container">
         <div class="image-row">
-          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
-          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
-          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
-        </div>
-    </div>
-  </div>
-
-  <div class="scroll-wrapper" style="padding-top: 75px;">
-    <p class="scroll-title">
-      <img src="..\photos\sleep_icon.png" style="width: 50px; vertical-align: middle; margin-right: 5px;">
-      A fazer umas sestas
-    </p>
-    <div id="sleep" class="scroll-container">
-        <div class="image-row">
-          <img src="../photos/lyla2.png" alt="" onclick="openModal('../photos/lyla2.png','Tirada no seu primeiro passeio!')">
-          <img src="../photos/lyla3.png" alt="" onclick="openModal('../photos/lyla3.png','A sentir-se fotogénica :)')">
-          <img src="../photos/lyla4.png" alt="" onclick="openModal('../photos/lyla4.png','Gostou muito das flores')"> 
+          <img src="../photos/max/max13.png" alt="" onclick="openModal('../photos/max/max13.png','Nem pensem em tirar-me isto!')">
+          <img src="../photos/max/max14.png" alt="" onclick="openModal('../photos/max/max14.png','Este é só para saborear com calma...')">
+          <img src="../photos/max/max15.png" alt="" onclick="openModal('../photos/max/max15.png','O melhor momento do dia!')"> 
         </div>
     </div>
   </div>
